@@ -12,7 +12,7 @@ namespace NewsFormsAdmin.Models
     {
         public Country()
         {
-            Articles = new HashSet<ArticlesD>();
+            Articles = new HashSet<ArticleRequest>();
         }
 
 
@@ -21,7 +21,7 @@ namespace NewsFormsAdmin.Models
         [StringLength(70)]
         public string ContriesName { get; set; }
 
-        //[InverseProperty(nameof(ArticlesD.Countries))]
-        public virtual ICollection<ArticlesD> Articles { get; set; }
+        
+        public virtual ICollection<ArticleRequest> Articles { get; set; }
     }
 }

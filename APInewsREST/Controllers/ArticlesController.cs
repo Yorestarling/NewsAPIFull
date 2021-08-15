@@ -41,7 +41,8 @@ namespace APInewsREST.Controllers
                 CategoryId = model.CategoryId,
                 SourcesId = model.SourcesId,
                 UlrToImage = model.UlrToImage,
-                Content = model.Content
+                Content = model.Content,
+                PublishedAt = model.PublishedAt
             };
  
             await _context.Articles.AddAsync(articles);

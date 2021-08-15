@@ -20,7 +20,7 @@ namespace NewsFormsAdmin.InsideForms.Articles
     {
 
         static HttpClient httpClient = new HttpClient();
-        List<ArticlesD> articles;
+        List<ArticleRequest> articles;
         public DetailsArticles()
         {
             InitializeComponent();
@@ -47,11 +47,11 @@ namespace NewsFormsAdmin.InsideForms.Articles
 
         }
 
-        private async Task<List<ArticlesD>> Articles()
+        private async Task<List<ArticleRequest>> Articles()
         {
             string response = await GetHttp();
 
-            articles = JsonConvert.DeserializeObject<List<ArticlesD>>(response);
+            articles = JsonConvert.DeserializeObject<List<ArticleRequest>>(response);
 
             return articles;
         }
@@ -62,10 +62,11 @@ namespace NewsFormsAdmin.InsideForms.Articles
             await Articles();
 
             var list = (from x in articles
-                        where x.Title.ToLower().Contains(TxtSearch.Text.ToLower())
-                        || x.AuthorName.ToLower().Contains(TxtSearch.Text.ToLower())
+                        where x.Title.ToLower().Contains(TxtSearch.Text.ToLower()
+                        )
                         select new
                         {
+                            article = x.ArticleId,
                             Author = x.AuthorName,
                             Title = x.Title,
                             Description = x.Descriptions,
@@ -79,8 +80,8 @@ namespace NewsFormsAdmin.InsideForms.Articles
                         }).ToList();
 
             dataGridView1.DataSource = list;
+            dataGridView1.Columns[0].Visible = false;
 
-           
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

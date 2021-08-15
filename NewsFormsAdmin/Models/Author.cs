@@ -13,7 +13,7 @@ namespace NewsFormsAdmin.Models
     {
         public Author()
         {
-            Articles = new HashSet<ArticlesD>();
+            Articles = new HashSet<ArticleRequest>();
         }
 
         [Key]        public int AuthorId { get; set; }
@@ -23,6 +23,6 @@ namespace NewsFormsAdmin.Models
         public string AuthorName { get; set; }
 
 
-        public virtual ICollection<ArticlesD> Articles { get; set; }
+        public virtual ICollection<ArticleRequest> Articles { get; set; }
     }
 }

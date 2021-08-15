@@ -12,7 +12,7 @@ namespace NewsFormsAdmin.Models
     {
         public Source()
         {
-            Articles = new HashSet<ArticlesD>();
+            Articles = new HashSet<ArticleRequest>();
         }
 
 
@@ -22,6 +22,6 @@ namespace NewsFormsAdmin.Models
         public string SourcesName { get; set; }
 
         //[InverseProperty(nameof(ArticlesD.Sources))]
-        public virtual ICollection<ArticlesD> Articles { get; set; }
+        public virtual ICollection<ArticleRequest> Articles { get; set; }
     }
 }

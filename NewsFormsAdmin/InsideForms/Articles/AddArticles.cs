@@ -23,6 +23,8 @@ namespace NewsFormsAdmin.InsideForms.Articles
         public AddArticles()
         {
             InitializeComponent();
+
+            httpClient.BaseAddress = new Uri("https://localhost:44320/");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -31,68 +33,43 @@ namespace NewsFormsAdmin.InsideForms.Articles
         }
 
         
-        void addArticles()
+        private void addArticles()
         {
-            string url = "https://localhost:44320/api/Articles";
-
-            ArticleRequest article = new ArticleRequest();
-
-            article.AuthorId = CbAuthor.SelectedIndex;
-            article.Title = TxtTitle.Text;
-            article.Descriptions = TxtDescriptions.Text;
-            article.Ulr = TxtUrl.Text;
-            article.CountriesId = CbCountry.SelectedIndex;
-            article.CategoryId = CbCategory.SelectedIndex;
-            article.SourcesId = CbSources.SelectedIndex;
-            article.UlrToImage = TxtUrlToImage.Text;
-            article.Content = TxtContent.Text;
-            article.PublishedAt = DateTime.Now;
-
-            string resultado = Send<ArticleRequest>(url, article, "POST");
-        }
-
-        public string Send<T>(string url, T objectRequest, string method = "POST")
-        {
-            string result = "";
-
-            try
+            var articles = new ArticleRequest
             {
+                Title = TxtTitle.Text,
+                AuthorId = CbAuthor.SelectedIndex,
+                Descriptions = TxtDescriptions.Text,
+                Content = TxtContent.Text,
+                Ulr = TxtUrl.Text,
+                UlrToImage = TxtUrlToImage.Text,
+                PublishedAt = DateTime.Now,
+                SourcesId = CbSources.SelectedIndex,
+                CategoryId = CbCategory.SelectedIndex,
+                CountriesId = CbCountry.SelectedIndex,
 
-               // JavaScriptSerializer js = new JavaScriptSerializer();
+            };
 
-                //serializamos el objeto
-                string json = JsonConvert.SerializeObject(objectRequest);
 
-                //peticion
-                WebRequest request = WebRequest.Create(url);
-                //headers
-                request.Method = method;
-                request.PreAuthenticate = true;
-                request.ContentType = "application/json;charset=utf-8'";
-                request.Timeout = 10000; //esto es opcional
+            string json = JsonConvert.SerializeObject(articles);
 
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    streamWriter.Write(json);
-                    streamWriter.Flush();
-                }
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var httpResponse = (HttpWebResponse)request.GetResponse();
+            var response = httpClient.PostAsync("/api/Articles", content).Result;
 
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    result = streamReader.ReadToEnd();
-                }
-
+            if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
+            {
+                MessageBox.Show("Article Inserted");
             }
-            catch (Exception e)
+            else
             {
-                result = e.Message;
-
+                MessageBox.Show("¡Error inserting an article!");
             }
 
-            return result;
+
         }
+
+        
 
         void clear()
         {

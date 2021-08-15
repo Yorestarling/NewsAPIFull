@@ -11,7 +11,9 @@ namespace NewsFormsAdmin.Models
         [Key]
         public int ArticleId { get; set; }
         public int AuthorId { get; set; }
-        [Required]
+
+        public string AuthorName { get; set; }
+        // [Required]
         [StringLength(255)]
         public string Title { get; set; }
         [Column("descriptions")]
@@ -26,6 +28,9 @@ namespace NewsFormsAdmin.Models
         public int SourcesId { get; set; }
         public int CategoryId { get; set; }
         public int CountriesId { get; set; }
+        public string SourcesName { get; set; }
+        public string CategoryName { get; set; }
+        public string CountriesName { get; set; }
 
         [ForeignKey(nameof(AuthorId))]
         [InverseProperty("Articles")]

@@ -11,7 +11,7 @@ namespace NewsFormsAdmin.Models
     {
         public Category()
         {
-            Articles = new HashSet<ArticlesD>();
+            Articles = new HashSet<ArticleRequest>();
         }
 
 
@@ -21,6 +21,6 @@ namespace NewsFormsAdmin.Models
         public string CategoryName { get; set; }
 
         //[InverseProperty(nameof(ArticlesD.Category))]
-        public virtual ICollection<ArticlesD> Articles { get; set; }
+        public virtual ICollection<ArticleRequest> Articles { get; set; }
     }
 }
