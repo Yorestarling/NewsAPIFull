@@ -103,6 +103,16 @@ namespace NewsFormsAdmin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Authorsd {
+            get {
+                object obj = ResourceManager.GetObject("Authorsd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap categories {
             get {
                 object obj = ResourceManager.GetObject("categories", resourceCulture);
@@ -166,6 +176,16 @@ namespace NewsFormsAdmin.Properties {
         internal static System.Drawing.Bitmap sours {
             get {
                 object obj = ResourceManager.GetObject("sours", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sours1 {
+            get {
+                object obj = ResourceManager.GetObject("sours1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

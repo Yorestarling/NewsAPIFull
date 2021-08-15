@@ -25,5 +25,11 @@ namespace NewsFormsAdmin.InsideForms.Countries
             CountryList countryList = new CountryList();
             countryList.ShowDialog();
         }
+
+        private void BtnArticles_Click(object sender, EventArgs e)
+        {
+            AddCountries add = new AddCountries();
+            add.ShowDialog();
+        }
     }
 }

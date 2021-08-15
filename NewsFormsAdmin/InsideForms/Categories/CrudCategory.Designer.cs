@@ -86,6 +86,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
             this.BtnArticles.TabIndex = 56;
             this.BtnArticles.Text = "Add Categories";
             this.BtnArticles.UseVisualStyleBackColor = false;
+            this.BtnArticles.Click += new System.EventHandler(this.BtnArticles_Click);
             // 
             // pictureBox1
             // 

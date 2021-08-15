@@ -25,5 +25,11 @@ namespace NewsFormsAdmin.InsideForms.Sources
             SourceList source = new SourceList();
             source.ShowDialog();
         }
+
+        private void BtnArticles_Click(object sender, EventArgs e)
+        {
+            AddSource add = new AddSource();
+            add.ShowDialog();
+        }
     }
 }

@@ -86,6 +86,7 @@ namespace NewsFormsAdmin.InsideForms.Sources
             this.BtnArticles.TabIndex = 64;
             this.BtnArticles.Text = "Add Sources";
             this.BtnArticles.UseVisualStyleBackColor = false;
+            this.BtnArticles.Click += new System.EventHandler(this.BtnArticles_Click);
             // 
             // pictureBox1
             // 

@@ -25,5 +25,11 @@ namespace NewsFormsAdmin.InsideForms.Categories
         {
             this.Close();
         }
+
+        private void BtnArticles_Click(object sender, EventArgs e)
+        {
+            AddCategory add = new AddCategory();
+            add.ShowDialog();
+        }
     }
 }

@@ -86,6 +86,7 @@ namespace NewsFormsAdmin.InsideForms.Countries
             this.BtnArticles.TabIndex = 60;
             this.BtnArticles.Text = "Add Countries";
             this.BtnArticles.UseVisualStyleBackColor = false;
+            this.BtnArticles.Click += new System.EventHandler(this.BtnArticles_Click);
             // 
             // pictureBox1
             // 

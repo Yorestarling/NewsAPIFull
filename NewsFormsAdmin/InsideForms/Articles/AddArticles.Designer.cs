@@ -144,10 +144,10 @@ namespace NewsFormsAdmin.InsideForms.Articles
             // 
             // TxtUrl
             // 
-            this.TxtUrl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtUrl.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtUrl.Location = new System.Drawing.Point(126, 439);
             this.TxtUrl.Name = "TxtUrl";
-            this.TxtUrl.Size = new System.Drawing.Size(295, 34);
+            this.TxtUrl.Size = new System.Drawing.Size(295, 30);
             this.TxtUrl.TabIndex = 10;
             // 
             // LblCountry
@@ -216,10 +216,10 @@ namespace NewsFormsAdmin.InsideForms.Articles
             // 
             // TxtUrlToImage
             // 
-            this.TxtUrlToImage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtUrlToImage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtUrlToImage.Location = new System.Drawing.Point(580, 223);
             this.TxtUrlToImage.Name = "TxtUrlToImage";
-            this.TxtUrlToImage.Size = new System.Drawing.Size(430, 34);
+            this.TxtUrlToImage.Size = new System.Drawing.Size(430, 30);
             this.TxtUrlToImage.TabIndex = 18;
             // 
             // LblContent

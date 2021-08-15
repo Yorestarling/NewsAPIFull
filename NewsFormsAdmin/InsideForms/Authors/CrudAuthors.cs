@@ -25,5 +25,11 @@ namespace NewsFormsAdmin.InsideForms.Authors
             AuthorsList details = new AuthorsList();
             details.ShowDialog();
         }
+
+        private void BtnAuthors_Click(object sender, EventArgs e)
+        {
+            AddAuthors add = new AddAuthors();
+            add.ShowDialog();
+        }
     }
 }

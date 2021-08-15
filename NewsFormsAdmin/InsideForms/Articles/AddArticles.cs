@@ -37,6 +37,7 @@ namespace NewsFormsAdmin.InsideForms.Articles
         {
             var articles = new ArticleRequest
             {
+            
                 Title = TxtTitle.Text,
                 AuthorId = CbAuthor.SelectedIndex,
                 Descriptions = TxtDescriptions.Text,
@@ -50,21 +51,34 @@ namespace NewsFormsAdmin.InsideForms.Articles
 
             };
 
-
-            string json = JsonConvert.SerializeObject(articles);
-
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = httpClient.PostAsync("/api/Articles", content).Result;
-
-            if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
+            if (TxtTitle.Text.Length == 0)
             {
-                MessageBox.Show("Article Inserted");
+                MessageBox.Show("Title Required");
+            }
+            else if (TxtDescriptions.Text.Length == 0)
+            {
+                MessageBox.Show("Descriptions Required");
             }
             else
             {
-                MessageBox.Show("¡Error inserting an article!");
+                string json = JsonConvert.SerializeObject(articles);
+
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = httpClient.PostAsync("/api/Articles", content).Result;
+
+                if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
+                {
+                    MessageBox.Show("Article Inserted");
+                }
+                else
+                {
+                    MessageBox.Show("¡Error inserting an article!");
+                }
             }
+
+
+            
 
 
         }
