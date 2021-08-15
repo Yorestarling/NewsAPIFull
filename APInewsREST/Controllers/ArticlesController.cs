@@ -28,50 +28,28 @@ namespace APInewsREST.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Add(ArticleRequest model)
+        public async Task<ActionResult<Article>> AddArticles(Article model)
         {
-            using (NewsAPIsideContext db = new NewsAPIsideContext())
+
+            var articles = new Article()
             {
-                var articles = new Article();
-                articles.AuthorId = model.AuthorId;
-                articles.Title = model.Title;
-                articles.Descriptions = model.Descriptions;
-                articles.Ulr = model.Ulr;
-                articles.CountriesId = model.CountriesId;
-                articles.CategoryId = model.CategoryId;
-                articles.SourcesId = model.SourcesId;
-                articles.UlrToImage = model.UlrToImage;
-                articles.Content = model.Content;
-                db.Articles.Add(articles);
-                db.SaveChanges();
-            }
+                AuthorId = model.AuthorId,
+                Title = model.Title,
+                Descriptions = model.Descriptions,
+                Ulr = model.Ulr,
+                CountriesId = model.CountriesId,
+                CategoryId = model.CategoryId,
+                SourcesId = model.SourcesId,
+                UlrToImage = model.UlrToImage,
+                Content = model.Content
+            };
+ 
+            await _context.Articles.AddAsync(articles);
+            await _context.SaveChangesAsync();
 
-            return Ok("exito");
+            return CreatedAtAction(nameof(GetArticle), new { q = articles.Title }, articles);
         }
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<ActionResult<Article>> PostArticle(ArticleRequest model)
-        //{
-        //    using (NewsAPIsideContext db = new NewsAPIsideContext())
-        //    {
-        //        var articles = new Article();
-        //        articles.AuthorId = model.AuthorId;
-        //        articles.Title = model.Title;
-        //        articles.Descriptions = model.Descriptions;
-        //        articles.Ulr = model.Ulr;
-        //        articles.CountriesId = model.CountriesId;
-        //        articles.CategoryId = model.CategoryId;
-        //        articles.SourcesId = model.SourcesId;
-        //        articles.UlrToImage = model.UlrToImage;
-        //        articles.Content = model.Content;
-        //        db.Articles.Add(articles);
-        //        db.SaveChanges();
-        //    }
-
-        //    return Ok("Agregado");
-        //}
-
-
+        
         [HttpGet]
         [AllowAnonymous]
         public ActionResult GetArticles()
@@ -118,7 +96,7 @@ namespace APInewsREST.Controllers
                     PublishedAt = articles.PublishedAt
                 }).ToArray();
 
-                return  Ok(articles);
+                return Ok(articles);
 
             }
             return NotFound();
