@@ -208,11 +208,11 @@ namespace NewsFormsAdmin.InsideForms.Articles
             // 
             this.LblUrlToImage.AutoSize = true;
             this.LblUrlToImage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblUrlToImage.Location = new System.Drawing.Point(467, 224);
+            this.LblUrlToImage.Location = new System.Drawing.Point(468, 226);
             this.LblUrlToImage.Name = "LblUrlToImage";
-            this.LblUrlToImage.Size = new System.Drawing.Size(107, 23);
+            this.LblUrlToImage.Size = new System.Drawing.Size(117, 23);
             this.LblUrlToImage.TabIndex = 17;
-            this.LblUrlToImage.Text = "UrlToImage:";
+            this.LblUrlToImage.Text = "Url To Image:";
             // 
             // TxtUrlToImage
             // 

@@ -104,8 +104,6 @@ namespace APInewsREST.Controllers
  
         }
 
-        // PUT: api/Articles/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         
         public async Task<IActionResult> PutArticle(int id, Article article)
@@ -136,8 +134,6 @@ namespace APInewsREST.Controllers
             return NoContent();
         }
 
-        // POST: api/Articles
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPost]
         //[AllowAnonymous]
         //public async Task<ActionResult<Article>> PostArticle(Article article)
@@ -153,7 +149,6 @@ namespace APInewsREST.Controllers
 
 
 
-        // DELETE: api/Articles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteArticle(int id)
         {

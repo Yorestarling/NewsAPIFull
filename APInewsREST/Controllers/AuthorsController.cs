@@ -22,7 +22,25 @@ namespace APInewsREST.Controllers
             _context = context;
         }
 
-        // GET: api/Authors
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult<Author>> AddAuthors(Author model)
+        {
+
+            var Authors = new Author()
+            {
+                AuthorId = model.AuthorId,
+                UsersId = model.UsersId,
+                AuthorName = model.AuthorName
+            };
+
+            await _context.Authors.AddAsync(Authors);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAuthors), new { id = Authors.AuthorId }, Authors);
+        }
+
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
@@ -35,7 +53,6 @@ namespace APInewsREST.Controllers
             }).ToListAsync();
         }
 
-        // GET: api/Authors/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(int id)
         {
@@ -49,8 +66,7 @@ namespace APInewsREST.Controllers
             return author;
         }
 
-        // PUT: api/Authors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthor(int id, Author author)
         {
@@ -80,18 +96,17 @@ namespace APInewsREST.Controllers
             return NoContent();
         }
 
-        // POST: api/Authors
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(Author author)
-        {
-            _context.Authors.Add(author);
-            await _context.SaveChangesAsync();
+       
+        //[HttpPost]
+        //public async Task<ActionResult<Author>> PostAuthor(Author author)
+        //{
+        //    _context.Authors.Add(author);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAuthor", new { id = author.AuthorId }, author);
-        }
+        //    return CreatedAtAction("GetAuthor", new { id = author.AuthorId }, author);
+        //}
 
-        // DELETE: api/Authors/5
+     
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {

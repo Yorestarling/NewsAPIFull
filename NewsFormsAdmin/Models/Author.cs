@@ -16,8 +16,8 @@ namespace NewsFormsAdmin.Models
             Articles = new HashSet<ArticleRequest>();
         }
 
-        [Key]        public int AuthorId { get; set; }
-        public int UsersId { get; set; }
+        public int AuthorId { get; set; }
+        public int? UsersId { get; set; }
 
         [StringLength(60)]
         public string AuthorName { get; set; }

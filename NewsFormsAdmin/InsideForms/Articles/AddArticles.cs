@@ -1,4 +1,4 @@
-﻿//using Nancy.Json;
+﻿
 using NewsFormsAdmin.Models;
 using Newtonsoft.Json;
 using System;
@@ -76,10 +76,6 @@ namespace NewsFormsAdmin.InsideForms.Articles
                     MessageBox.Show("¡Error inserting an article!");
                 }
             }
-
-
-            
-
 
         }
 

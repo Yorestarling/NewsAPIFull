@@ -17,9 +17,7 @@ namespace NewsFormsAdmin
         public Login()
         {
             InitializeComponent();
-        }
-
-        
+        } 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -71,7 +69,7 @@ namespace NewsFormsAdmin
                     mENU.ShowDialog();
 
                     
-                    // return responseObject;
+                    //return responseObject;
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
@@ -81,10 +79,7 @@ namespace NewsFormsAdmin
                 {
                     throw new ApplicationException("Internal Server Error");
                 }
-
             }
-
-
         }
 
         private void BtnLog_Enter(object sender, EventArgs e)

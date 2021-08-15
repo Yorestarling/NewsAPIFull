@@ -59,6 +59,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
             this.Btncategory.TabIndex = 49;
             this.Btncategory.Text = "Add Category";
             this.Btncategory.UseVisualStyleBackColor = false;
+            this.Btncategory.Click += new System.EventHandler(this.Btncategory_Click);
             // 
             // BtnToMenu
             // 
@@ -108,6 +109,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
             this.Name = "AddCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCategory";
+            this.Load += new System.EventHandler(this.AddCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -22,7 +22,6 @@ namespace APInewsREST.Controllers
             _context = context;
         }
 
-        // GET: api/Sources
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Source>>> GetSources()
@@ -30,7 +29,7 @@ namespace APInewsREST.Controllers
             return await _context.Sources.ToListAsync();
         }
 
-        // GET: api/Sources/5
+      
         [HttpGet("{id}")]
         public async Task<ActionResult<Source>> GetSource(int id)
         {
@@ -44,8 +43,7 @@ namespace APInewsREST.Controllers
             return source;
         }
 
-        // PUT: api/Sources/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+       
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSource(int id, Source source)
         {
@@ -75,8 +73,6 @@ namespace APInewsREST.Controllers
             return NoContent();
         }
 
-        // POST: api/Sources
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Source>> PostSource(Source source)
         {
@@ -86,7 +82,6 @@ namespace APInewsREST.Controllers
             return CreatedAtAction("GetSource", new { id = source.SourcesId }, source);
         }
 
-        // DELETE: api/Sources/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSource(int id)
         {

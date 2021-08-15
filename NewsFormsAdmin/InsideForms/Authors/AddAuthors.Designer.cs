@@ -79,6 +79,7 @@ namespace NewsFormsAdmin.InsideForms.Authors
             this.BtnAuthors.TabIndex = 44;
             this.BtnAuthors.Text = "Add Authors";
             this.BtnAuthors.UseVisualStyleBackColor = false;
+            this.BtnAuthors.Click += new System.EventHandler(this.BtnAuthors_Click);
             // 
             // pictureBox1
             // 
