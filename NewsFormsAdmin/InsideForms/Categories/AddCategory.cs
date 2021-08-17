@@ -33,10 +33,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
         }
         private void addArticles()
         {
-            var category = new Category
-            {             
-                CategoryName = txtCategoryName.Text,
-            };
+           
 
             if (txtCategoryName.Text.Length == 0)
             {
@@ -44,11 +41,16 @@ namespace NewsFormsAdmin.InsideForms.Categories
             }           
             else
             {
+                var category = new Category
+                {
+                    CategoryName = txtCategoryName.Text,
+                };
+
                 string json = JsonConvert.SerializeObject(category);
 
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = httpClient.PostAsync("​/api​/Categories", content).Result;
+                var response = httpClient.PostAsync("/​api/Categories", content).Result;
 
                 if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
                 {

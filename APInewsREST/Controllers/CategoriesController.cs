@@ -22,6 +22,7 @@ namespace APInewsREST.Controllers
             _context = context;
         }
 
+        [ActionName(nameof(GetCategory))]
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<Category>> AddCategory(Category model)
@@ -29,7 +30,7 @@ namespace APInewsREST.Controllers
 
             var category = new Category()
             {
-                CategoryId = model.CategoryId,
+               CategoryId = model.CategoryId,
                 CategoryName = model.CategoryName, 
             };
 

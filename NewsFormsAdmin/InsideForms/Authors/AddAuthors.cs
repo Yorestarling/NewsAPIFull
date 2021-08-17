@@ -9,12 +9,15 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace NewsFormsAdmin.InsideForms.Authors
 {
     public partial class AddAuthors : Form
     {
-        static HttpClient httpClient = new HttpClient();
+        static readonly HttpClient httpClient = new HttpClient();
         public AddAuthors()
         {
             InitializeComponent();
@@ -26,40 +29,34 @@ namespace NewsFormsAdmin.InsideForms.Authors
             this.Close();
         }
 
-        private void addAuthor()
+       
+        private void addAuthors()
         {
-            var authors = new Author
+            var author = new AuthorDto
             {
-                AuthorName = textBox1.Text,
+                AuthorName = TxtAuthors.Text,
             };
 
-            if (textBox1.Text.Length == 0)
+            string json = JsonConvert.SerializeObject(author);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = httpClient.PostAsync("/api/Authors", content).Result;
+
+            if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
             {
-                MessageBox.Show("Name Required");
-            }       
+                MessageBox.Show("Author Inserted!");
+
+            }
             else
             {
-                string json = JsonConvert.SerializeObject(authors);
-
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = httpClient.PostAsync("/api​/Authors", content).Result;
-
-                if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
-                {
-                    MessageBox.Show("Author Inserted");
-                }
-                else
-                {
-                    MessageBox.Show("¡Error inserting an article!");
-                }
+                MessageBox.Show("¡Error!");
             }
-
         }
-
         private void BtnAuthors_Click(object sender, EventArgs e)
         {
-            addAuthor();
+            addAuthors();
+            //addAuthor();
         }
     }
 }

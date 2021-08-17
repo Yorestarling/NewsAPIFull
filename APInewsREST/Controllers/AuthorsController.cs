@@ -27,17 +27,17 @@ namespace APInewsREST.Controllers
         public async Task<ActionResult<Author>> AddAuthors(Author model)
         {
 
-            var Authors = new Author()
+            var author_ = new Author
             {
-                AuthorId = model.AuthorId,
-                UsersId = model.UsersId,
-                AuthorName = model.AuthorName
+
+                AuthorName = model.AuthorName,
+                UsersId = 2
             };
 
-            await _context.Authors.AddAsync(Authors);
+            _context.Authors.Add(author_);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAuthors), new { id = Authors.AuthorId }, Authors);
+            return CreatedAtAction("GetAuthor", new { id = author_.AuthorId }, author_);
         }
 
 

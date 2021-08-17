@@ -30,7 +30,7 @@ namespace NewsFormsAdmin.InsideForms.Authors
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAuthors));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtAuthors = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnToMenu = new System.Windows.Forms.Button();
             this.BtnAuthors = new System.Windows.Forms.Button();
@@ -38,12 +38,12 @@ namespace NewsFormsAdmin.InsideForms.Authors
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TxtAuthors
             // 
-            this.textBox1.Location = new System.Drawing.Point(292, 182);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 27);
-            this.textBox1.TabIndex = 0;
+            this.TxtAuthors.Location = new System.Drawing.Point(292, 182);
+            this.TxtAuthors.Name = "TxtAuthors";
+            this.TxtAuthors.Size = new System.Drawing.Size(299, 27);
+            this.TxtAuthors.TabIndex = 0;
             // 
             // label1
             // 
@@ -101,7 +101,7 @@ namespace NewsFormsAdmin.InsideForms.Authors
             this.Controls.Add(this.BtnAuthors);
             this.Controls.Add(this.BtnToMenu);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtAuthors);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(818, 497);
             this.MinimizeBox = false;
@@ -117,7 +117,7 @@ namespace NewsFormsAdmin.InsideForms.Authors
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtAuthors;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnToMenu;
         private System.Windows.Forms.Button BtnAuthors;
