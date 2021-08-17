@@ -22,24 +22,6 @@ namespace APInewsREST.Controllers
             _context = context;
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<ActionResult<Author>> AddAuthors(Author model)
-        {
-
-            var author_ = new Author
-            {
-
-                AuthorName = model.AuthorName,
-                UsersId = 2
-            };
-
-            _context.Authors.Add(author_);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAuthor", new { id = author_.AuthorId }, author_);
-        }
-
 
         [HttpGet]
         [AllowAnonymous]
@@ -96,17 +78,25 @@ namespace APInewsREST.Controllers
             return NoContent();
         }
 
-       
-        //[HttpPost]
-        //public async Task<ActionResult<Author>> PostAuthor(Author author)
-        //{
-        //    _context.Authors.Add(author);
-        //    await _context.SaveChangesAsync();
 
-        //    return CreatedAtAction("GetAuthor", new { id = author.AuthorId }, author);
-        //}
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult<Author>> PostAuthor(Author author)
+        {
 
-     
+            var author_ = new Author
+            {
+                AuthorName = author.AuthorName,
+                UsersId = 2
+            };
+
+             _context.Authors.Add(author_);
+             await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAuthor", new { id = author_.AuthorId}, author_);
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {

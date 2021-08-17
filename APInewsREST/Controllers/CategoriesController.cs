@@ -22,25 +22,7 @@ namespace APInewsREST.Controllers
             _context = context;
         }
 
-        [ActionName(nameof(GetCategory))]
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<ActionResult<Category>> AddCategory(Category model)
-        {
-
-            var category = new Category()
-            {
-               CategoryId = model.CategoryId,
-                CategoryName = model.CategoryName, 
-            };
-
-            await _context.Categories.AddAsync(category);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetCategory), new { q = category.CategoryName }, category);
-          //  return CreatedAtAction("GetCategory", new { id = category.CategoryName }, category);
-        }
-
+        // GET: api/Categories
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
@@ -48,29 +30,22 @@ namespace APInewsREST.Controllers
             return await _context.Categories.ToListAsync();
         }
 
-    
-        [HttpGet("{q}")]
-        [AllowAnonymous]
-        public async Task<ActionResult<Category>> GetCategory(String q)
+        // GET: api/Categories/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Category>> GetCategory(int id)
         {
-            var query = _context.Categories.AsQueryable().Where(a => a.CategoryName.Contains(q));
+            var category = await _context.Categories.FindAsync(id);
 
-            if (!string.IsNullOrEmpty(q))
+            if (category == null)
             {
-                query = query.Where(a => a.CategoryName.Contains(q));
-                var categoryS = query.Select(category => new CategoryDTO
-                {
-                    CategoryName = category.CategoryName,
-                    
-                }).ToArray();
-
-                return Ok(categoryS);
-
+                return NotFound();
             }
-            return NotFound();
+
+            return category;
         }
 
-        
+        // PUT: api/Categories/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(int id, Category category)
         {
@@ -100,17 +75,25 @@ namespace APInewsREST.Controllers
             return NoContent();
         }
 
-        
-        //[HttpPost]
-        //public async Task<ActionResult<Category>> PostCategory(Category category)
-        //{
-        //    _context.Categories.Add(category);
-        //    await _context.SaveChangesAsync();
+        // POST: api/Categories
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult<Category>> PostCategory(Category category)
+        {
+            var categories = new Category
+            {
+                CategoryName = category.CategoryName
+            };
 
-        //    return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
-        //}
+            _context.Categories.Add(categories);
+            await _context.SaveChangesAsync();
 
-       
+            return CreatedAtAction("GetCategory", new { id = categories.CategoryId }, categories);
+        }
+
+
+        // DELETE: api/Categories/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {

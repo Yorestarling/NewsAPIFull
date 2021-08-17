@@ -109,7 +109,9 @@ namespace NewsFormsAdmin.InsideForms.Categories
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCategories);
             this.Controls.Add(this.pictureBox3);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(966, 528);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(966, 528);
             this.Name = "CrudCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

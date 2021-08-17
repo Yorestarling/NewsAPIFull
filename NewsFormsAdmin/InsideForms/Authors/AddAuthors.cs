@@ -46,7 +46,6 @@ namespace NewsFormsAdmin.InsideForms.Authors
             if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
             {
                 MessageBox.Show("Author Inserted!");
-
             }
             else
             {

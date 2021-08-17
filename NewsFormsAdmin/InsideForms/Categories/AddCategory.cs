@@ -31,42 +31,34 @@ namespace NewsFormsAdmin.InsideForms.Categories
         {
 
         }
-        private void addArticles()
+        private void addcategory()
         {
-           
-
-            if (txtCategoryName.Text.Length == 0)
+            var category = new Category_DTO
             {
-                MessageBox.Show("Category Name Required");
-            }           
+                CategoryName = txtCategoryName.Text,
+            };
+
+            string json = JsonConvert.SerializeObject(category);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = httpClient.PostAsync("/api/Categories", content).Result;
+
+            if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
+            {
+                MessageBox.Show("Category Inserted!");
+
+            }
             else
             {
-                var category = new Category
-                {
-                    CategoryName = txtCategoryName.Text,
-                };
-
-                string json = JsonConvert.SerializeObject(category);
-
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = httpClient.PostAsync("/​api/Categories", content).Result;
-
-                if (response.StatusCode == HttpStatusCode.Created || response.StatusCode == HttpStatusCode.OK)
-                {
-                    MessageBox.Show("Article Inserted");
-                }
-                else
-                {
-                    MessageBox.Show("¡Error inserting an article!");
-                }
+                MessageBox.Show("¡Error!");
             }
-
         }
 
         private void Btncategory_Click(object sender, EventArgs e)
         {
-            addArticles();
+            addcategory();
+            txtCategoryName.Clear();
         }
     }
 }

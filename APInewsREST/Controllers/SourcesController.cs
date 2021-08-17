@@ -74,12 +74,18 @@ namespace APInewsREST.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<Source>> PostSource(Source source)
         {
-            _context.Sources.Add(source);
+            var Sources = new Source
+            {
+                SourcesName = source.SourcesName
+            };
+
+            _context.Sources.Add(Sources);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSource", new { id = source.SourcesId }, source);
+            return CreatedAtAction("GetSource", new { id = Sources.SourcesId }, Sources);
         }
 
         [HttpDelete("{id}")]

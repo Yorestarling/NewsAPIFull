@@ -76,12 +76,18 @@ namespace APInewsREST.Controllers
 
         
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
-            _context.Countries.Add(country);
+            var _country = new Country
+            {
+                ContriesName = country.ContriesName
+            };
+
+            _context.Countries.Add(_country);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCountry", new { id = country.CountriesId }, country);
+            return CreatedAtAction("GetCountry", new { id = _country.CountriesId }, _country);
         }
 
         

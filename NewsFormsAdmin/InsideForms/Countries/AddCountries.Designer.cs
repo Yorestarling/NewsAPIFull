@@ -59,6 +59,7 @@ namespace NewsFormsAdmin.InsideForms.Countries
             this.BtnCountry.TabIndex = 54;
             this.BtnCountry.Text = "Add Country";
             this.BtnCountry.UseVisualStyleBackColor = false;
+            this.BtnCountry.Click += new System.EventHandler(this.BtnCountry_Click);
             // 
             // BtnToMenu
             // 
