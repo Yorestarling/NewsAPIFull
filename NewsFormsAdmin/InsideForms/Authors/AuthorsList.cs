@@ -19,6 +19,8 @@ namespace NewsFormsAdmin.InsideForms.Authors
     {
         static HttpClient httpClient = new HttpClient();
         List<AuthorDto> Author;
+
+        private int authorsid;
         public AuthorsList()
         {
             InitializeComponent();
@@ -77,6 +79,12 @@ namespace NewsFormsAdmin.InsideForms.Authors
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Are you sure to delete this author?");
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //authorsid = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+            
         }
     }
 }

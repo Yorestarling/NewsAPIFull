@@ -31,7 +31,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
         {
 
         }
-        private void addcategory()
+        private void Addcategory()
         {
             var category = new Category_DTO
             {
@@ -57,7 +57,7 @@ namespace NewsFormsAdmin.InsideForms.Categories
 
         private void Btncategory_Click(object sender, EventArgs e)
         {
-            addcategory();
+            Addcategory();
             txtCategoryName.Clear();
         }
     }

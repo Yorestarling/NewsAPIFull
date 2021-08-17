@@ -86,6 +86,11 @@ namespace NewsFormsAdmin.InsideForms.Articles
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+           // LoadGrid();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
             LoadGrid();
         }
     }

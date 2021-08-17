@@ -104,6 +104,7 @@ namespace NewsFormsAdmin.InsideForms.Authors
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(859, 271);
             this.dataGridView1.TabIndex = 64;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // AuthorsList
             // 
@@ -117,7 +118,9 @@ namespace NewsFormsAdmin.InsideForms.Authors
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(901, 555);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(901, 555);
             this.Name = "AuthorsList";
             this.Text = "AuthorsList";
